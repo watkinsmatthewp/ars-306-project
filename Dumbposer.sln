@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dumbposer", "Dumbposer\Dumbposer.csproj", "{1D0F7CCB-53AA-43CE-BC02-24B6FD5AAAB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dumbposer", "Dumbposer\Dumbposer.csproj", "{1D0F7CCB-53AA-43CE-BC02-24B6FD5AAAB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dumbposer.Tests", "Dumbposer.Tests\Dumbposer.Tests.csproj", "{BF4BE258-BE79-4C9F-B0B3-DD0A5C83C0A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dumbposer.Tests", "Dumbposer.Tests\Dumbposer.Tests.csproj", "{BF4BE258-BE79-4C9F-B0B3-DD0A5C83C0A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{324BF515-B9F1-4A12-A3F9-ED37B9707437}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
