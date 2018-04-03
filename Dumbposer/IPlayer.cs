@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Dumbposer
 {
-    public class Note
+    interface IPlayer
     {
-        public Tone Tone { get; set; }
-        public double Beats { get; set; }
+        int BeatsPerSecond { get; set; }
+        void Play(Note note);
     }
 }

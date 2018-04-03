@@ -4,7 +4,11 @@ namespace Dumbposer
 {
     public class Tone
     {
-        readonly static string[][] TONE_NAMES = new string[][]
+        const int HALF_STEPS_IN_OCTAVE = 12;
+        const int HOME_ID = 49;
+        const double HOME_FREQUENCY = 440;
+        static readonly double HALF_STEP_FREQUENCY_BASE = Math.Pow(2, 1 / 12d);
+        static readonly string[][] TONE_NAMES = new string[][]
         {
             new [] { "C" },
             new [] { "C#", "Db" },
@@ -40,13 +44,15 @@ namespace Dumbposer
             }
         }
 
+        public double Frequency => HOME_FREQUENCY * Math.Pow(HALF_STEP_FREQUENCY_BASE, ID - HOME_ID);
+
         public string FullName
         {
             get => $"{Name}{Octave}";
             set
             {
                 Name = value.Substring(0, value.Length - 1);
-                Octave = value[value.Length - 1];
+                Octave = value[value.Length - 1] - '0';
             }
         }
 

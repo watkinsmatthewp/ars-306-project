@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 namespace Dumbposer.Tests
 {
@@ -43,6 +44,24 @@ namespace Dumbposer.Tests
             Assert.Equal("A4", HOME_TONE.FullName);
         }
 
+        [Fact]
+        public void Tone_HomeTone_CalculatedFields_Frequency_Test()
+        {
+            Assert.Equal(440d, HOME_TONE.Frequency);
+        }
+
+        [Fact]
+        public void Tone_HomeTone_FromName_Test()
+        {
+            var tone = new Tone { FullName = "A4" };
+            Assert.Equal(HOME_TONE.Frequency, tone.Frequency);
+            Assert.Equal(HOME_TONE.FullName, tone.FullName);
+            Assert.Equal(HOME_TONE.ID, tone.ID);
+            Assert.Equal(HOME_TONE.Name, tone.Name);
+            Assert.Equal(HOME_TONE.Number, tone.Number);
+            Assert.Equal(HOME_TONE.Octave, tone.Octave);
+        }
+
         #endregion
 
         #region F#3
@@ -71,6 +90,13 @@ namespace Dumbposer.Tests
         {
             Assert.Equal("F#3", FSHARP3.FullName);
         }
+
+        [Fact]
+        public void Tone_FSharp3_CalculatedFields_Frequency_Test()
+        {
+            Assert.Equal(184.997d, Math.Round(FSHARP3.Frequency, 3));
+        }
+
         #endregion
     }
 }
