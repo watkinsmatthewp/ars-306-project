@@ -36,7 +36,7 @@ namespace Dumbposer
             {
                 if (Debug)
                 {
-                    Console.WriteLine($"Playing {note.Tone.FullName} ({note.Tone.Frequency} Hz) for {durationMs} ms");
+                    Console.WriteLine($"Playing {note.Tone.FullName} ({note.Tone.Frequency} Hz) for {note.Beats} beats ({durationMs} ms)");
                 }
                 if (MakeSound)
                 {
