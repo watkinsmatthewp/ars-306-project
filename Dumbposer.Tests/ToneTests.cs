@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dumbposer.Entities;
+using System;
 using Xunit;
 
 namespace Dumbposer.Tests
@@ -98,5 +99,14 @@ namespace Dumbposer.Tests
         }
 
         #endregion
+
+        [Fact]
+        public void Tone_SetByID_Test()
+        {
+            var tone = new Tone { ID = 49 };
+            Assert.Equal("A4", tone.FullName);
+            tone.ID = 39;
+            Assert.Equal("B3", tone.FullName);
+        }
     }
 }

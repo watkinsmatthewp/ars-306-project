@@ -1,10 +1,11 @@
 ﻿using System;
 
-namespace Dumbposer
+namespace Dumbposer.Entities
 {
     public class Tone
     {
-        const int HALF_STEPS_IN_OCTAVE = 12;
+        public const int HALF_STEPS_IN_OCTAVE = 12;
+
         const int HOME_ID = 49;
         const double HOME_FREQUENCY = 440;
         static readonly double HALF_STEP_FREQUENCY_BASE = Math.Pow(2, 1 / 12d);
@@ -38,9 +39,8 @@ namespace Dumbposer
             get => (Octave * 12) + Number - 8;
             set
             {
-                var relativeID = value - 8;
-                Octave = relativeID / 12;
-                Number = relativeID % 12;
+                Number = (value - 4) % 12;
+                Octave = ((value - Number - 4) / 12) + 1;
             }
         }
 
