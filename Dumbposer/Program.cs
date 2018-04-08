@@ -1,6 +1,8 @@
 ﻿using Dumbposer.Composition;
 using Dumbposer.Entities;
+using Dumbposer.Extensions;
 using Dumbposer.Players;
+using Dumbposer.Printers;
 using System;
 
 namespace Dumbposer
@@ -9,37 +11,36 @@ namespace Dumbposer
     {
         static void Main(string[] args)
         {
+            var melody = new RandomCompositionStrategy().Compose(new RandomCompositionStrategyInput
+            {
+                // Random = new Random(1234567890),
+                BeatsPerMeasure = 3,
+                ChanceOfRestOneIn = 9,
+                MaxNoteBeats = 1,
+                MinNoteBeats = 1,
+                MinOctaveOffset = 0,
+                MaxOctaveOffset = 0,
+                NumberOfMeasures = 24,
+                AllowedIntervals = Scale.Major
+            });
+
+            Console.WriteLine(new VexFlowMelodyPrinter().Print(melody));
+
             var player = new ConsolePlayer
             {
                 Debug = true,
                 MakeSound = true,
             };
-            var melody = new HappyBirthdayCompositionStrategy().Compose(null);
-            new ConsolePlayer().Play(melody, new MelodyContext
+
+            var melodyContext = new MelodyContext
             {
-                BeatsPerMinute = 120
-            });
+                BeatsPerMinute = 180
+            };
+
+            player.Play(melodyContext, melody);
+
             Console.WriteLine("Done");
             Console.ReadKey();
         }
-
-        //static void PlayRandomNotes(ConsolePlayer player)
-        //{
-        //    var random = new Random();
-        //    for (var i = 0; i < 1000; i++)
-        //    {
-        //        var toneName = (char)random.Next('A', 'G' + 1);
-        //        var octaveNumber = random.Next(2, 8);
-        //        var beats = random.Next(1, 17) * .0625d;
-        //        player.Play(new Note
-        //        {
-        //            Beats = beats,
-        //            Tone = new Tone
-        //            {
-        //                FullName = $"{toneName}{octaveNumber}"
-        //            }
-        //        });
-        //    }
-        //}
     }
 }

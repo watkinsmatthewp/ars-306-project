@@ -11,23 +11,23 @@ namespace Dumbposer.Composition
 
         private IEnumerable<Note> GetNotes()
         {
-            yield return new Note { Interval = Intervals.P5, Beats = .67 };
-            yield return new Note { Interval = Intervals.P5, Beats = .33 };
+            yield return new Note { Interval = Interval.P5, Beats = .67 };
+            yield return new Note { Interval = Interval.P5, Beats = .33 };
 
-            yield return new Note { Interval = Intervals.M6, Beats = 1 };
-            yield return new Note { Interval = Intervals.P5, Beats = 1 };
-            yield return new Note { Interval = Intervals.P8, Beats = 1 };
+            yield return new Note { Interval = Interval.M6, Beats = 1 };
+            yield return new Note { Interval = Interval.P5, Beats = 1 };
+            yield return new Note { Interval = Interval.P8, Beats = 1 };
 
-            yield return new Note { Interval = Intervals.M7, Beats = 1 };
+            yield return new Note { Interval = Interval.M7, Beats = 1 };
             yield return new Note { Beats = 1 };
-            yield return new Note { Interval = Intervals.P5, Beats = .67 };
-            yield return new Note { Interval = Intervals.P5, Beats = .33 };
+            yield return new Note { Interval = Interval.P5, Beats = .67 };
+            yield return new Note { Interval = Interval.P5, Beats = .33 };
 
-            yield return new Note { Interval = Intervals.M6, Beats = 1 };
-            yield return new Note { Interval = Intervals.P5, Beats = 1 };
-            yield return new Note { OctaveOffset = 1, Interval = Intervals.M2, Beats = 1 };
+            yield return new Note { Interval = Interval.M6, Beats = 1 };
+            yield return new Note { Interval = Interval.P5, Beats = 1 };
+            yield return new Note { OctaveOffset = 1, Interval = Interval.M2, Beats = 1 };
 
-            yield return new Note { Interval = Intervals.P8, Beats = 1 };
+            yield return new Note { Interval = Interval.P8, Beats = 1 };
         }
     }
 }

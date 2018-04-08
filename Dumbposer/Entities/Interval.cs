@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Dumbposer.Entities
+﻿namespace Dumbposer.Entities
 {
-    public static class Intervals
+    public static class Interval
     {
         public const int P1 = 0;
         public const int m2 = 1;

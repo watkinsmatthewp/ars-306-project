@@ -4,6 +4,6 @@ namespace Dumbposer.Players
 {
     public interface IPlayer
     {
-        void Play(Melody melody, MelodyContext context);
+        void Play(MelodyContext context, Melody melody);
     }
 }

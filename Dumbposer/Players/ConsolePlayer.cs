@@ -9,7 +9,7 @@ namespace Dumbposer.Players
         public bool MakeSound { get; set; } = true;
         public bool Debug { get; set; } = true;
 
-        public void Play(Melody melody, MelodyContext context)
+        public void Play(MelodyContext context, Melody melody)
         {
             var msPerBeat = 60000d / context.BeatsPerMinute;
             foreach (var note in melody.GetNotes())
