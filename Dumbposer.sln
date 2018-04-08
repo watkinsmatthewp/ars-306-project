@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dumbposer.Tests", "Dumbpose
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{324BF515-B9F1-4A12-A3F9-ED37B9707437}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dumposer.Web", "Dumposer.Web\Dumposer.Web.csproj", "{45E8A60E-1564-46A0-944A-78ADA66F14E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{BF4BE258-BE79-4C9F-B0B3-DD0A5C83C0A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF4BE258-BE79-4C9F-B0B3-DD0A5C83C0A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF4BE258-BE79-4C9F-B0B3-DD0A5C83C0A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45E8A60E-1564-46A0-944A-78ADA66F14E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E8A60E-1564-46A0-944A-78ADA66F14E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E8A60E-1564-46A0-944A-78ADA66F14E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E8A60E-1564-46A0-944A-78ADA66F14E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

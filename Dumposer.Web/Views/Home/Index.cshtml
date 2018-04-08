@@ -1,0 +1,24 @@
+﻿@using Dumbposer.Entities;
+@using Dumbposer.Printers;
+@using Dumbposer.Extensions;
+
+@{
+    ViewData["Title"] = "Home Page";
+    var vexTab = ViewData["VexTab"] as string;
+}
+
+@model Melody
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+    <p>TODO: Configure here...</p>
+    <button class="btn btn-success" type="submit">Submit</button>
+}
+
+@if (Model != null)
+{
+    <div class="vex-tabdiv" width="680" scale="1.0" editor="false" editor_width="680" editor_height="330">
+        @(new VexFlowMelodyPrinter().Print(Model))
+        options player=true
+    </div>
+}
