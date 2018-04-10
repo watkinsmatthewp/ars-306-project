@@ -4,7 +4,7 @@
 @using Dumbposer.Composition;
 
 @{
-    ViewData["Title"] = "Random";
+    ViewData["Title"] = "♪ Dumbposer - Random Melody Generator ♫";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var melody = ViewData["Melody"] as Melody;
 }
@@ -13,8 +13,9 @@
 
 @using (Html.BeginForm("Random", "Home", FormMethod.Post))
 {
-    <div class="card">
+    <div class="card" style="margin-bottom: 1em;">
         <div class="card-body">
+            <h3>Parameters</h3>
             <div class="form-group">
                 <label>Scale</label>
                 @Html.DropDownList("scale", new[]
@@ -136,5 +137,10 @@
 
 @if (melody != null)
 {
-    @Html.Partial("_VexTab", melody)
+    <div class="card">
+        <div class="card-body">
+            <h3>Melody</h3>
+            @Html.Partial("_VexTab", melody)
+        </div>
+    </div>
 }
