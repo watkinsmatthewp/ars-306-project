@@ -1,0 +1,140 @@
+﻿@using Dumbposer.Entities;
+@using Dumbposer.Printers;
+@using Dumbposer.Extensions;
+@using Dumbposer.Composition;
+
+@{
+    ViewData["Title"] = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var melody = ViewData["Melody"] as Melody;
+}
+
+@model RandomCompositionStrategyInput
+
+@using (Html.BeginForm("Random", "Home", FormMethod.Post))
+{
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group">
+                <label>Scale</label>
+                @Html.DropDownList("scale", new[]
+               {
+    new SelectListItem { Text = $"{nameof(Scale.Major)}", Value = $"{nameof(Scale.Major)}" },
+    new SelectListItem { Text = $"{nameof(Scale.NaturalMinor)}", Value = $"{nameof(Scale.NaturalMinor)}" },
+    new SelectListItem { Text = $"{nameof(Scale.HarmonicMinor)}", Value = $"{nameof(Scale.HarmonicMinor)}" },
+    new SelectListItem { Text = $"{nameof(Scale.MelodicMinorScale)}", Value = $"{nameof(Scale.MelodicMinorScale)}" }
+}, new { @class = "form-control" })
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Lines</label>
+                        @Html.DropDownListFor(m => m.NumberOfMeasures, new[]
+                    {
+                                    new SelectListItem { Text = "1", Value = "4", Selected = Model.NumberOfMeasures == 4 },
+                                    new SelectListItem { Text = "2", Value = "8", Selected = Model.NumberOfMeasures == 8 },
+                                    new SelectListItem { Text = "3", Value = "12", Selected = Model.NumberOfMeasures == 12 },
+                                    new SelectListItem { Text = "4", Value = "16", Selected = Model.NumberOfMeasures == 16 },
+                                    new SelectListItem { Text = "5", Value = "20", Selected = Model.NumberOfMeasures == 20 },
+                                    new SelectListItem { Text = "6", Value = "24", Selected = Model.NumberOfMeasures == 24 },
+                                    new SelectListItem { Text = "7", Value = "28", Selected = Model.NumberOfMeasures == 28 },
+                                    new SelectListItem { Text = "8", Value = "32", Selected = Model.NumberOfMeasures == 32 }
+                                }, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Beats per measure</label>
+                        @Html.DropDownListFor(m => m.BeatsPerMeasure, new[]
+         {
+                            new SelectListItem { Text = "3", Value = "3", Selected = Model.BeatsPerMeasure == 3 },
+                            new SelectListItem { Text = "4", Value = "4", Selected = Model.BeatsPerMeasure == 4 },
+                            new SelectListItem { Text = "6", Value = "6", Selected = Model.BeatsPerMeasure == 5 },
+                            new SelectListItem { Text = "8", Value = "8", Selected = Model.BeatsPerMeasure == 8 }
+                        }, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Min note length (beats)</label>
+                        @Html.DropDownListFor(m => m.MinNoteBeats, new[]
+                    {
+                                    new SelectListItem { Text = "1/8", Value = ".125", Selected = Model.MinNoteBeats == .125 },
+                                    new SelectListItem { Text = "1/4", Value = ".25", Selected = Model.MinNoteBeats == .25 },
+                                    new SelectListItem { Text = "1/3", Value = ".33", Selected = Model.MinNoteBeats == .33 },
+                                    new SelectListItem { Text = "1/2", Value = ".5", Selected = Model.MinNoteBeats == .5 },
+                                    new SelectListItem { Text = "1", Value = "1", Selected = Model.MinNoteBeats == 1 },
+                                    new SelectListItem { Text = "2", Value = "2", Selected = Model.MinNoteBeats == 2 },
+                                    new SelectListItem { Text = "3", Value = "3", Selected = Model.MinNoteBeats == 3 },
+                                    new SelectListItem { Text = "4", Value = "4", Selected = Model.MinNoteBeats == 4 },
+                                    new SelectListItem { Text = "6", Value = "6", Selected = Model.MinNoteBeats == 5 },
+                                    new SelectListItem { Text = "8", Value = "8", Selected = Model.MinNoteBeats == 8 }
+                                }, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Max beat length (beats)</label>
+                        @Html.DropDownListFor(m => m.MaxNoteBeats, new[]
+                    {
+                                    new SelectListItem { Text = "1/8", Value = ".125", Selected = Model.MinNoteBeats == .125 },
+                                    new SelectListItem { Text = "1/4", Value = ".25", Selected = Model.MinNoteBeats == .25 },
+                                    new SelectListItem { Text = "1/3", Value = ".33", Selected = Model.MinNoteBeats == .33 },
+                                    new SelectListItem { Text = "1/2", Value = ".5", Selected = Model.MinNoteBeats == .5 },
+                                    new SelectListItem { Text = "1", Value = "1", Selected = Model.MinNoteBeats == 1 },
+                                    new SelectListItem { Text = "2", Value = "2", Selected = Model.MinNoteBeats == 2 },
+                                    new SelectListItem { Text = "3", Value = "3", Selected = Model.MinNoteBeats == 3 },
+                                    new SelectListItem { Text = "4", Value = "4", Selected = Model.MinNoteBeats == 4 },
+                                    new SelectListItem { Text = "6", Value = "6", Selected = Model.MinNoteBeats == 5 },
+                                    new SelectListItem { Text = "8", Value = "8", Selected = Model.MinNoteBeats == 8 }
+                                }, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Lower octave offset</label>
+                        @Html.DropDownListFor(m => m.MinOctaveOffset, new[]
+                         {
+                                        new SelectListItem { Text = "0", Value = "0", Selected = Model.MinOctaveOffset == 0 },
+                                        new SelectListItem { Text = "-1", Value = "-1", Selected = Model.MinOctaveOffset == -1 },
+                                        new SelectListItem { Text = "-2", Value = "-2", Selected = Model.MinOctaveOffset == -2 },
+                                    }, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Upper octave offset</label>
+                        @Html.DropDownListFor(m => m.MaxOctaveOffset, new[]
+                        {
+                                    new SelectListItem { Text = "0", Value = "0", Selected = Model.MaxOctaveOffset == 0 },
+                                    new SelectListItem { Text = "+1", Value = "1", Selected = Model.MaxOctaveOffset == 1 },
+                                    new SelectListItem { Text = "+2", Value = "2", Selected = Model.MaxOctaveOffset == 2 },
+                                }, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Chance of rest</label>
+                @Html.DropDownListFor(m => m.ChanceOfRestOneIn, new[]
+            {
+            new SelectListItem { Text = "5%", Value = "20", Selected = Model.ChanceOfRestOneIn == 20 },
+            new SelectListItem { Text = "12.5%", Value = "8", Selected = Model.ChanceOfRestOneIn == 8 },
+            new SelectListItem { Text = "25%", Value = "4", Selected = Model.ChanceOfRestOneIn == 4 },
+            new SelectListItem { Text = "33%", Value = "3", Selected = Model.ChanceOfRestOneIn == 3 }
+        }, new { @class = "form-control" })
+            </div>
+            <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+    </div>
+}
+
+@if (melody != null)
+{
+    @Html.Partial("_VexTab", melody)
+}

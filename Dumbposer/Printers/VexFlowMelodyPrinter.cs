@@ -10,6 +10,7 @@ namespace Dumbposer.Printers
     {
         static readonly Dictionary<double, string> DURATION_NOTATION = new Dictionary<double, string >
         {
+            [.125] = "32",
             [.25] = "16",
             [.33] = "8",
             [.5] = "8",

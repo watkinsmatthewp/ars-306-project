@@ -1,0 +1,12 @@
+﻿@using Dumbposer.Entities;
+@using Dumbposer.Printers;
+@using Dumbposer.Extensions;
+@using Dumbposer.Composition;
+@model Melody
+
+<div class="text-center">
+    <div class="vex-tabdiv" width="960" scale="1.0">
+        @(new VexFlowMelodyPrinter().Print(Model))
+        options player=true
+    </div>
+</div>
